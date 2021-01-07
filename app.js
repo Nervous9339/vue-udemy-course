@@ -1,21 +1,53 @@
 const app = Vue.createApp({
     data() {
         return {
-            courseGoalA: 'Finish the course and learn Vue!',
-            courseGoalB: 'Master Vue and build amazing apps!',
-            vueLink: 'https://vuejs.org'
+            counter: 0,
+            name: '',
+            lastName: ''
+            // fullName: ''
         };
     },
-    methods: {
-        outputGoal() {
-            const randomNumber = Math.random();
-            if (randomNumber < 0.5) {
-                return this.courseGoalA;
-            } else {
-                return this.courseGoalB;
+    watch: {
+        counter(value) {
+            if (value > 50) {
+                this.counter = 0
             }
+        }
+        // name(value) {
+        //   if (value === '') {
+        //     this.fullName = ''
+        //   } else {
+        //     this.fullName = value + ' ' + this.lastName()
+        //   }
+        // },
+        // lastName(value) {
+        //   if (value === '') {
+        //     this.fullName = ''
+        //   } else {
+        //     this.fullName = this.name + ' ' + value
+        //   }
+        // }
+    },
+    computed: {
+        fullName() {
+            console.log('Running again')
+            if (this.name === '' || this.lastName === '') {
+                return '';
+            }
+            return this.name + ' ' + this.lastName
+        }
+    },
+    methods: {
+        add(num) {
+            this.counter = this.counter + num;
+        },
+        reduce(num) {
+            this.counter = this.counter - num;
+        },
+        resetInput() {
+            this.name = ''
         }
     }
 });
 
-app.mount('#user-goal');
+app.mount('#events');
