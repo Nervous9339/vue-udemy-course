@@ -1,17 +1,19 @@
 const app = Vue.createApp({
     data() {
         return {
-            name: 'Nikita',
-            age: 27,
-            imageUrl: 'random.jpg'
-        };
+            firstOutput: 'OUTPUT',
+            secondOutput: 'SECOND OUTPUT'
+        }
     },
     methods: {
-        newAge() {
-            return this.age + 5;
+        showAlert() {
+            alert('Hello there!')
         },
-        randomNumber() {
-            return Math.random();
+        showUserInput(event) {
+            this.firstOutput = event.target.value
+        },
+        showUserInputOnEnter(event) {
+            this.secondOutput = event.target.value
         }
     }
 });
